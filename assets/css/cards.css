@@ -1,0 +1,46 @@
+.card:hover{
+    -webkit-transition: all .3s ease;
+    /* Safari y Chrome */
+    -moz-transition: all .9s ease;
+    /* Firefox */
+    -o-transition: all .9s ease;
+    /* IE 9 */
+    -ms-transition: all .9s ease;
+    /* Opera */
+    width: 100%;
+    
+    -webkit-transform: scale(1.10);
+    -moz-transform: scale(1.10);
+    -ms-transform: scale(1.10);
+    -o-transform: scale(1.10);
+    transform: scale(1.10);
+}
+
+.card-text {
+    font-size: small;
+    text-align: justify;
+}
+
+.card-title-large {
+    font-size: small;
+}
+
+a{
+    color: black;
+}
+.card img {
+    /*margin-top: .20em;
+    margin-bottom: .20em;*/
+    max-width: 5em;
+    max-height: 5em;
+}
+
+.card a:hover {
+    text-decoration: underline !important;
+    color: black !important;
+}
+
+.vs-none {
+    display: none;
+    visibility: hidden;
+}

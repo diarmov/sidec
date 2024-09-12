@@ -1,0 +1,33 @@
+.cont {
+    position: relative;
+    height: 70vh;
+    padding-bottom: 3rem;
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+
+#map {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.table-responsive {
+    padding-top: 3rem;
+    ;
+}
+
+#btn-table:hover {
+    color: forestgreen;
+    text-decoration: underline;
+    text-decoration-color: forestgreen;
+}
+
+/*@media only screen and (min-width: 425px) {
+            .cont {
+                display: none;
+                padding-bottom: 0;;
+            }
+        }*/
