@@ -8,6 +8,7 @@ include('../api/cliente_aSAC.php');
 include('../api/cliente_aSIRE.php');
 
 $link = connect();
+$conexion_sised = connect_sised();
 
 if ($_POST) {
 
@@ -52,10 +53,13 @@ if ($_POST) {
 
 						/********************************************************************************************************************* */
 						// INSERTAR REGISTRO DE la denuncia en el sistema de SISED
-						$sql = "SELECT MAX(id) FROM expedientes";
-						$result = $conn->query($sql);
+						$sql = "SELECT COUNT(*) as total FROM expedientes WHERE expediente like '%sidec%'";
+						$result = $conexion_sised->query($sql);
+						$res = $result->fetch_object();
 
-						$nombre = 'UI/' . ($result + 1) . '/DEN/Remitida-' . 'SFP' . '/' . $fechaYear;
+						$total = (int) $res->total + 1;
+
+						$nombre = 'UI/' . 'sidec' . $total . '/DEN/Remitida-' . 'SFP' . '/' . $fechaYear;
 
 						$expediente = $nombre;
 						$descripcion =  $justificacion;
@@ -72,20 +76,22 @@ if ($_POST) {
 						$archivo = null;
 						$sidec = $id_denuncia;
 
-						$sql2 = "INSERT INTO expedientes(expediente, descripcion, fecha_recepcion, auto_inicio, asunto, origen, fuente, ubicacion, tipo_investigacion_id, medio_captacion_id, turnar_id, dependencia_id, archivo, sidec) 
-												 VALUES ($expediente,$descripcion,$fecha_recepcion,$auto_inicio,$asunto,$origen,$fuente,$ubicacion,$tipo_investigacion_id,$medio_captacion_id,$turnar_id,$dependencia_id,$archivo,$sidec)";
+						$sql2 = "INSERT INTO expedientes(expediente, descripcion, fecha_recepcion, auto_inicio, asunto, origen, fuente, ubicacion, 
+						                                 tipo_investigacion_id, medio_captacion_id, turnar_id, dependencia_id, archivo, sidec) 
+												 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-						dd($sql2);
-						echo $sql2;
-						printf($sql2);
+						$insertarExpediente =  $conexion_sised->prepare($sql2);
+						$insertarExpediente->bind_param("ssssssssiiiiss", $expediente, $descripcion, $fecha_recepcion, $auto_inicio, $asunto, $origen, $fuente, $ubicacion, $tipo_investigacion_id, $medio_captacion_id, $turnar_id, $dependencia_id, $archivo, $sidec);
 
-						if ($conn->query($sql2) === TRUE) {
-							echo "Nuevo registro creado con éxito";
-						} else {
-							echo "Error: " . $sql2 . "<br>" . $conn->error;
+						if (!$insertarExpediente->execute()) {
+
+							exit;
 						}
 
-						$conn->close();
+
+
+
+						$conexion_sised->close();
 
 						/****************************************************************************************************************************** */
 						$idBitacora = null;

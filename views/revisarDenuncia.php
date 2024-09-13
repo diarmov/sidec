@@ -836,21 +836,22 @@ if (empty($_SESSION['username'])) {
                 dataType: 'json', //como viene la respuesta
                 processData: false, // tell jQuery not to process the data
                 contentType: false,
+
                 beforeSend: function() {
                     $('#gif_loader').show();
                 },
                 success: function(response) {
-
+                    console.log(response);
                     $("#modalConfirmar").modal('toggle');
                     $("#modalCalificar").modal('toggle');
                     $("#btnConfirmar").prop('disabled', false);
                     if (response.response == 1) {
                         //window.location.href = "views/verDenuncia.php";
-
                         $('#alerta').html('<p>Denuncia clasificada exitosamente</p><br><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
                         $('#alerta').show();
                         setTimeout("window.location.href = 'verDenuncia.php';", 4000);
                     } else {
+                        console.log(response);
                         $("#clasificarDenuncia").prop('disabled', false);
                         $('#alerta_danger').html('<p>No se pudo clasificar la denuncia, intenta nuevamente <br>Error: <span class="font-weight-bold">' + response.data.message + '</span></p><br><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
                         $('#alerta_danger').show();
@@ -863,7 +864,7 @@ if (empty($_SESSION['username'])) {
                     $("#modalConfirmar").modal('toggle');
                     $("#btnConfirmar").prop('disabled', false);
                     console.log(response);
-                    alert(response);
+                    alert("error" + response);
                 }
             });
         });

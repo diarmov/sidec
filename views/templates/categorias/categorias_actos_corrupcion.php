@@ -249,4 +249,19 @@
             </div>
         </a>
     </div>
+
+    <div class="col mb-4">
+        <a href="crearDenuncia.php?cat_den=22">
+            <div class="card shadow w-100 h-100" style="border-color: #9a2bc7;">
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <img src="../../assets/img/iconos/otro.png" class="card-img-top" alt="image">
+                    <h5 class="card-title text-center mt-2 px-1">Otro
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">No sabes cómo se clasifica el delito que quieres denunciar?.</p>
+                </div>
+            </div>
+        </a>
+    </div>
 </div>

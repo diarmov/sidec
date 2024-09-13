@@ -199,7 +199,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <p class="copy_right text-center">
-                            
+
                         </p>
                     </div>
                 </div>

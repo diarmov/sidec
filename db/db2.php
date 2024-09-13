@@ -1,13 +1,13 @@
 <?php
-$servername = "localhost";
-$database = "soicv2db";
-$username = "root";
-$password = "";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+function connect_sised()
+{
+    $link = new mysqli('localhost', 'root', '', 'soicv2db');
+    if ($link->connect_errno) {
+        echo "Error conectando a la base de datos.<br>";
+        echo "Errno: " . $link->connect_errno . "<br>";
+        echo "Error: " . $link->connect_error . "<br>";
+        exit;
+    } else {
+        return $link;
+    }
 }
-echo "Connected successfully";
-mysqli_close($conn);
