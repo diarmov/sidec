@@ -74,14 +74,47 @@ if ($_POST) {
 						$turnar_id = 8;
 						$dependencia_id = 21;
 						$archivo = null;
-						$sidec = $id_denuncia;
+						$sidec = 1;
+						$folio_sidec = $id_denuncia;
 
-						$sql2 = "INSERT INTO expedientes(expediente, descripcion, fecha_recepcion, auto_inicio, asunto, origen, fuente, ubicacion, 
-						                                 tipo_investigacion_id, medio_captacion_id, turnar_id, dependencia_id, archivo, sidec) 
-												 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+						/*	$sql2 = "INSERT INTO expedientes(expediente, descripcion, fecha_recepcion, auto_inicio, asunto, origen, fuente, ubicacion, 
+						                                 tipo_investigacion_id, medio_captacion_id, turnar_id, dependencia_id, archivo, sidec, folio_sidec) 
+												 VALUES ('$expediente', '$descripcion', '$fecha_recepcion', '$auto_inicio', '$asunto', '$origen', '$fuente', '$ubicacion', $tipo_investigacion_id, $medio_captacion_id, $turnar_id, $dependencia_id, '$archivo', $sidec, '$folio_sidec')";
+
 
 						$insertarExpediente =  $conexion_sised->prepare($sql2);
-						$insertarExpediente->bind_param("ssssssssiiiiss", $expediente, $descripcion, $fecha_recepcion, $auto_inicio, $asunto, $origen, $fuente, $ubicacion, $tipo_investigacion_id, $medio_captacion_id, $turnar_id, $dependencia_id, $archivo, $sidec);
+
+*/
+
+						$sql2 = "INSERT INTO expedientes(expediente, descripcion, fecha_recepcion, auto_inicio, asunto, origen, fuente, ubicacion, 
+                                    tipo_investigacion_id, medio_captacion_id, turnar_id, dependencia_id, archivo, sidec, folio_sidec) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+						$insertarExpediente = $conexion_sised->prepare($sql2);
+
+						if ($insertarExpediente === false) {
+							die('Error en la preparación de la consulta: ' . $conexion_sised->error);
+						}
+
+						$insertarExpediente->bind_param(
+							"ssssssssiiiisis",
+							$expediente,
+							$descripcion,
+							$fecha_recepcion,
+							$auto_inicio,
+							$asunto,
+							$origen,
+							$fuente,
+							$ubicacion,
+							$tipo_investigacion_id,
+							$medio_captacion_id,
+							$turnar_id,
+							$dependencia_id,
+							$archivo,
+							$sidec,
+							$folio_sidec
+						);
+
 
 						if (!$insertarExpediente->execute()) {
 

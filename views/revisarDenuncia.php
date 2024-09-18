@@ -725,7 +725,7 @@ if (empty($_SESSION['username'])) {
                             <div class="col xl-6 d-flex justify-content-around">
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input cb" value="1">
-                                    <label class="custom-control-label" for="customRadioInline1">SIRE</label>
+                                    <label class="custom-control-label" for="customRadioInline1">SISED</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input cb" value="2">

@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../../assets/css/style.min.css">
     <link rel="stylesheet" href="../../assets/css/slicknav.min.css">
     <link rel="stylesheet" href="../../assets/css/map.css">
+    <script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/5d5305d1-c388-4368-b525-effcabb1fc0d/webchat/v2.1/config.js"></script>
 </head>
 
 <body>

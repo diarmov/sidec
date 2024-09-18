@@ -1,4 +1,6 @@
 <?php
+include('../../db/db.php');
+$link = connect();
 if (!isset($_GET['cat_den'])) {
     header('Location: categoriaDenuncia.php');
 } else {
@@ -7,7 +9,16 @@ if (!isset($_GET['cat_den'])) {
     } else {
         $categoria_denuncia = $_GET['cat_den'];
     }
+    $query = "SELECT id_cat_tipo_denuncia, categoria, activo FROM cat_tipo_denuncia WHERE id_cat_tipo_denuncia =" . $categoria_denuncia . " and activo=1";
+    if (!$resultado = $link->query($query)) {
+        echo $link->error . "<br>";
+        exit;
+    } else {
+        $catdenuncia = $resultado->fetch_assoc();
+        $tipo_den = $catdenuncia["categoria"];
+    }
 }
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -114,7 +125,8 @@ if (!isset($_GET['cat_den'])) {
             <div class="row pb-5 pt-1">
                 <div class="col-xl-12">
                     <?php
-                    if ($categoria_denuncia >= 17 || $categoria_denuncia == 0) {
+
+                    if ($tipo_den == 2) {
                         echo '<h4 class="display-4">Datos de la manifestación ciudadana</h4>';
                     } else {
                         echo '<h4 class="display-4">Datos de la denuncia</h4>';
@@ -138,7 +150,9 @@ if (!isset($_GET['cat_den'])) {
                             $nombre_buzon = $_GET['name'];
                             $id_buzon = $_GET['idBuzon'];
                             echo '<div class="col-xl-6">';
-                            if ($categoria_denuncia >= 17 || $categoria_denuncia == 0) {
+
+
+                            if ($tipo_den == 2) {
                                 echo '<label for="tipo_asunto">Tipo de manifestación ciudadana:</label><br>';
                             } else {
                                 echo '<label for="tipo_asunto">Tipo de Denuncia:</label><br>';
@@ -156,7 +170,7 @@ if (!isset($_GET['cat_den'])) {
                                 </div>';
                         } else {
                             echo '<div class="col-xl-12">';
-                            if ($categoria_denuncia >= 17 || $categoria_denuncia == 0) {
+                            if ($tipo_den == 2) {
                                 echo '<label for="tipo_asunto">Tipo de manifestación ciudadana:</label><br>';
                             } else {
                                 echo '<label for="tipo_asunto">Tipo de Denuncia:</label><br>';
@@ -229,7 +243,7 @@ if (!isset($_GET['cat_den'])) {
                             </div>
                         </div>
                     </div>';
-                    if ($categoria_denuncia >= 17 || $categoria_denuncia == 0) {
+                    if ($tipo_den == 2) {
                         echo
                         '
                         <div id="oculto_peticion_2" class="col-xl-12 mt-4">
