@@ -67,8 +67,8 @@ if ($_POST) {
 						$auto_inicio = $fechaHoy;
 						$asunto = $justificacion;
 						$origen = 'Nueva';
-						$fuente = 'UIF-RECEPCION';
-						$ubicacion = 'UIF-RECEPCION';
+						$fuente = 'UIF-DEN';
+						$ubicacion = 'UIF-DEN';
 						$tipo_investigacion_id = 1;
 						$medio_captacion_id =  21;
 						$turnar_id = 8;
