@@ -1,6 +1,12 @@
 <div class="row py-3 pl-3 flex-column">
     <h1 class="display-4">Denuncia</h1>
-    <p>Observe las diferentes circunstancias y seleccione la que más se acerque a lo que quiere denunciar.
+    <p>Deseas presentar tu denuncia y no sabes que tipo es?</p>
+    <p>Presenta aquí tu denuncia</p>
+    <div class="col-2">
+        <a href="crearDenuncia.php?cat_den=22" class="btn btn-outline-danger btn-lg">Denuncia</a>
+    </div>
+    <br>
+    <p>Conoces el tipo de denuncia que deseas presentar?, selecciona de los siguientes tipos que te presentamos.
     </p>
 </div>
 <h4 class="py-3">Denuncias por actos de corrupción</h4>
