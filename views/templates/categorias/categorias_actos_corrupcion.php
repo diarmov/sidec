@@ -1,7 +1,7 @@
 <div class="row py-3 pl-3 flex-column">
     <h1 class="display-4">Denuncia</h1>
     <p>Deseas presentar tu denuncia y no sabes que tipo es?</p>
-    <p>Presenta aquí tu denuncia</p>
+    <p>Presentala aquí</p>
     <div class="col-2">
         <a href="crearDenuncia.php?cat_den=22" class="btn btn-outline-danger btn-lg">Denuncia</a>
     </div>
